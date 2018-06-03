@@ -11,7 +11,7 @@
     "eslint-init": "eslint --init",
     "eslint": "eslint ./server ./client; exit 0",
     "react-dev": "webpack -d --watch",
-    "server": "nodemon ./server"
+    "server": "nodemon ./server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
