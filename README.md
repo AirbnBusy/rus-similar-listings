@@ -1,2 +1,5 @@
-# rus-similar-listings
-# Testing
+Recreation of Airbnb's similar listings front-end module.
+
+
+
+
