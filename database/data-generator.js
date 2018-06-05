@@ -26,15 +26,15 @@ const listingHeader = [
 ];
 const ratings = _.range(1, 5.5, 0.5);
 
-for (let i = 1001; i <= 1100; i++) {
-  let photo = i + '.jpg';
-  let lsd = listingSizeDescription[Math.floor(Math.random() * listingSizeDescription.length)];
-  let beds = Math.ceil(Math.random() * 4);
-  let lh = listingHeader[Math.floor(Math.random() * listingHeader.length)];
-  let price = Math.ceil(Math.random() * 700);
-  let rating = ratings[Math.floor(Math.random() * ratings.length)];
+for (let i = 1001; i <= 1100; i += 1) {
+  const photo = `${i}.jpg`;
+  const lsd = listingSizeDescription[Math.floor(Math.random() * listingSizeDescription.length)];
+  const beds = Math.ceil(Math.random() * 4);
+  const lh = listingHeader[Math.floor(Math.random() * listingHeader.length)];
+  const price = Math.ceil(Math.random() * 700);
+  const rating = ratings[Math.floor(Math.random() * ratings.length)];
 
-  db.query(`INSERT INTO listings (photo, listing_size_description, beds, listing_header, price, avg_rating) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", ${price}, ${rating})`, (err, results) => {
+  db.query(`INSERT INTO listings (photo, listing_size_description, beds, listing_header, price, avg_rating) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", ${price}, ${rating})`, (err) => {
     if (err) {
       console.log(`Failed to write to the DB, here is the error: ${err}`);
     }
@@ -42,10 +42,10 @@ for (let i = 1001; i <= 1100; i++) {
 }
 
 const similarListingIds = _.range(1001, 1101);
-for (let i = 1001; i <= 1100; i++) {
-  for (let j = 0; j < 12; j++) {
-    let sli = similarListingIds[Math.floor(Math.random() * similarListingIds.length)];
-    db.query(`INSERT INTO similar_listings (listing_id, similar_listing_id) VALUES(${i}, ${sli})`, (err, results) => {
+for (let i = 1001; i <= 1100; i += 1) {
+  for (let j = 0; j < 12; j += 1) {
+    const sli = similarListingIds[Math.floor(Math.random() * similarListingIds.length)];
+    db.query(`INSERT INTO similar_listings (listing_id, similar_listing_id) VALUES(${i}, ${sli})`, (err) => {
       if (err) {
         console.log(`Failed to write to the DB, here is the error: ${err}`);
       }
