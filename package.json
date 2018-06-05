@@ -9,11 +9,13 @@
   },
   "scripts": {
     "eslint-init": "eslint --init",
-    "eslint": "eslint ./server ./client; exit 0",
+    "eslint": "eslint ./server ./client/src ./database; exit 0",
     "react-dev": "webpack -d --watch",
     "server": "nodemon ./server/server.js"
   },
   "dependencies": {
+    "aws-sdk": "^2.251.1",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mysql": "^2.15.0",
