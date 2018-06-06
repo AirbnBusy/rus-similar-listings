@@ -9,9 +9,10 @@
   },
   "scripts": {
     "eslint-init": "eslint --init",
-    "eslint": "eslint ./server ./client/src ./database; exit 0",
+    "eslint": "eslint ./server ./client/src ./database ./tests; exit 0",
     "react-dev": "webpack -d --watch",
-    "server": "nodemon ./server/server.js"
+    "server": "nodemon ./server/server.js",
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "aws-sdk": "^2.251.1",
