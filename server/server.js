@@ -8,7 +8,13 @@ const app = express();
 app.use('/rooms/:id', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/api/similar-listings/:id', (req, res) => {
-  res.status(200).send('Request arrived successfuly!');
+  const id = req.params.id;
+  db.getSimilarListings(id, (err, results) => {
+    if (err) {
+      console.log(`DB query failed, here is the error: ${err}`);
+    }
+    res.status(200).send(results);
+  });
 });
 
 const PORT = 3004;
