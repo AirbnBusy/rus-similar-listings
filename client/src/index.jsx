@@ -14,9 +14,9 @@ class App extends React.Component {
 
 	getSimilarListings() {
 		const id = document.location.href.slice(28);
-		axios.get(`http://localhost:3004/rooms/${id}`)
+		axios.get(`http://localhost:3004/api/similar-listings/${id}`)
 			.then( (response) => {
-				console.log(`Get request successful, here is the response: ${response}`);
+				console.log(`Get request successful, here is the response: ${response.data}`);
 			})
 			.catch( (err) => {
 				if (err) {
