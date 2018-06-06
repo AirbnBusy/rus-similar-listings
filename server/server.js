@@ -1,12 +1,11 @@
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
-const axios = require('axios');
 const db = require('./../database/index.js');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/../client/dist')));
+app.use('/rooms/:id', express.static(path.join(__dirname, '/../client/dist')));
 
 const PORT = 3004;
 app.listen(PORT, () => {
