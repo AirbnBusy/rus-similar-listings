@@ -8,8 +8,8 @@ const app = express();
 app.use('/rooms/:id', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/api/similar-listings/:id', (req, res) => {
-  const id = req.params.id;
-  db.getSimilarListings(id, (err, results) => {
+  const { params } = req;
+  db.getSimilarListings(params.id, (err, results) => {
     if (err) {
       console.log(`DB query failed, here is the error: ${err}`);
     }

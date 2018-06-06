@@ -5,7 +5,7 @@ const connection = mysql.createConnection({
   database: 'airbnb_similar_listings',
 });
 
-connection.connect( (err) => {
+connection.connect((err) => {
   if (err) {
     console.log(`Failed to connect to the db, here is the error: ${err}`);
     return;
@@ -13,9 +13,19 @@ connection.connect( (err) => {
   console.log(`Successfuly connected to the db, here is the connection id: ${connection.threadId}`);
 });
 
-const getSimilarListings = function(id, callback) {
+function getSimilarListings(id, callback) {
   connection.query(`SELECT similar_listing_id FROM similar_listings WHERE listing_id=${id}`, (err, results) => {
-    callback(err, results);
+    if (err) {
+      console.log(`DB query failed, here is the error: ${err}`);
+    }
+
+    const similarListingIds = [];
+    results.forEach((similarListing) => {
+      similarListingIds.push(similarListing.similar_listing_id);
+    });
+    connection.query(`SELECT * FROM listings WHERE id IN (${similarListingIds})`, (error, data) => {
+      callback(error, data);
+    });
   });
 }
 
