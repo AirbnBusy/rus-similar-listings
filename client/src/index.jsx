@@ -17,9 +17,6 @@ class App extends React.Component {
 		axios.get(`http://localhost:3004/api/similar-listings/${id}`)
 			.then( (response) => {
 				console.log(`Get request successful, here is the response: ${response.data}`);
-				response.data.forEach( (listing) => {
-				  console.log(listing);
-				});
 			})
 			.catch( (err) => {
 				if (err) {

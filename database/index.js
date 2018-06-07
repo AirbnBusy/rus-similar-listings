@@ -32,14 +32,21 @@ function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
 
 function populateSimilarListingsTable(similarListingIds) {
   for (let i = 1001; i <= 1100; i += 1) {
-    for (let j = 0; j < 12; j += 1) {
-      const sli = similarListingIds[Math.floor(Math.random() * similarListingIds.length)];
+    const twelveIds = [];
+    while(twelveIds.length < 12) {
+      const id = similarListingIds[Math.floor(Math.random() * similarListingIds.length)];
+      if (!twelveIds.includes(id)) {
+        twelveIds.push(id);
+      }
+    }
+
+    twelveIds.forEach((sli) => {
       connection.query(`INSERT INTO similar_listings (listing_id, similar_listing_id) VALUES(${i}, ${sli})`, (err) => {
         if (err) {
           console.log(`Failed to write to the DB, here is the error: ${err}`);
         }
       });
-    }
+    });
   }
 }
 
