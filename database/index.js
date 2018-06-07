@@ -33,7 +33,7 @@ function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
 function populateSimilarListingsTable(similarListingIds) {
   for (let i = 1001; i <= 1100; i += 1) {
     const twelveIds = [];
-    while(twelveIds.length < 12) {
+    while (twelveIds.length < 12) {
       const id = similarListingIds[Math.floor(Math.random() * similarListingIds.length)];
       if (!twelveIds.includes(id)) {
         twelveIds.push(id);
