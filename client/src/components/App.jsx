@@ -24,6 +24,9 @@ class App extends React.Component {
 		axios.get(`http://localhost:3004/api/similar-listings/${id}`)
 			.then((response) => {
 				console.log(`Get request successful, here is the response data: ${response.data}`);
+        response.data.forEach((listing) => {
+          console.log(listing);  
+        });
 				this.setState({
 					similarListings: response.data,
 				});

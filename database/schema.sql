@@ -12,6 +12,7 @@ CREATE TABLE listings (
 	listing_header VARCHAR(300) NOT NULL,
 	price int NOT NULL,
 	avg_rating decimal(3, 2) UNSIGNED NOT NULL,
+	number_of_reviews int NOT NULL,
   PRIMARY KEY (id)
 );
 

@@ -21,8 +21,9 @@ function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
     const lh = listingHeader[Math.floor(Math.random() * listingHeader.length)];
     const price = Math.ceil(Math.random() * 700);
     const rating = ratings[Math.floor(Math.random() * ratings.length)];
+    const numOfReviews = Math.ceil(Math.random() * 350);
 
-    connection.query(`INSERT INTO listings (photo, listing_size_description, beds, listing_header, price, avg_rating) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", ${price}, ${rating})`, (err) => {
+    connection.query(`INSERT INTO listings (photo, listing_size_description, beds, listing_header, price, avg_rating, number_of_reviews) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", ${price}, ${rating}, ${numOfReviews})`, (err) => {
       if (err) {
         console.log(`Failed to write to the DB, here is the error: ${err}`);
       }
