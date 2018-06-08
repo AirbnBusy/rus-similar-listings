@@ -12,7 +12,10 @@ const CarouselEntry = ({ listing }) => {
     <p>{`${listing.listing_size_description}`} &bull; {`${listing.beds} ${bed}`}</p>
     <p>{listing.listing_header}</p>
     <p>{`$${listing.price} per night`}</p>
-    <ReactStars count={5} value={listing.avg_rating} edit={false} color2={'#0897A6'} size={'10'} />
+    <div>
+      <ReactStars className={styles.stars} count={5} value={listing.avg_rating} edit={false} color2={'#0897A6'} size={10} />
+      <span>{listing.number_of_reviews}</span>
+    </div>
     </div>
   );
 }

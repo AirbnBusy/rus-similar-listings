@@ -3,3 +3,7 @@
   height: 250px;
   border-radius: 3px;
 }
+
+.stars {
+  display: inline;
+}
