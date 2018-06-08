@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './../styles/style.css';
 
 const CarouselEntry = ({ listing }) => (
   <div>
-    <h3>Test: {listing.photo}</h3>
+    <img className={styles.photo} src={`https://airbnb-similar-listings-photos.s3.amazonaws.com/${listing.photo}`}/>
   </div>
 );
 
