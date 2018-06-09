@@ -1,7 +1,21 @@
+.photoContainer {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 .photo {
   width: 350px;
   height: 250px;
   border-radius: 3px;
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 15px;
+  left: 305px;
 }
 
 .stars {
