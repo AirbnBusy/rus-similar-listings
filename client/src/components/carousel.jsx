@@ -4,7 +4,7 @@ import styles from './../styles/style.css';
 
 const Carousel = ({ similarListings }) => (
   <div>
-    <h2>Similar Listings</h2>
+    <h2 className={styles.listingsHeader}>Similar listings</h2>
     <CarouselEntry listing={similarListings[0]}/>
   </div>
 );
