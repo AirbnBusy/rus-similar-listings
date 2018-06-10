@@ -30,9 +30,12 @@ class App extends React.Component {
           console.log(listing);
         });
 				const currentListings = [];
-				currentListings.push(response.data[0]);
-				currentListings.push(response.data[1]);
-				currentListings.push(response.data[2]);
+				for (let i = 0; i < 3; i += 1) {
+					currentListings.push(response.data[i]);
+				}
+				// currentListings.push(response.data[0]);
+				// currentListings.push(response.data[1]);
+				// currentListings.push(response.data[2]);
 
 				this.setState({
 					similarListings: response.data,
@@ -45,6 +48,16 @@ class App extends React.Component {
 				}
 			});
 	}
+
+	// scrollCarouselRight() {
+	// 	const currentFirstListingIndex;
+	// 	// iterate over similarListings
+	// 		// if similarListings[i] = currentListings[0]
+	// 			// currentFirstListingIndex = i;
+	// 	const currentListings = [];
+	// 	// iterate over similarListings from currentFirstListingIndex + 1 until currentFirstListingIndex + 3
+	// 		currentListings.push()
+	// }
 
 	render() {
 		let display;
