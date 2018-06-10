@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
+import styles from './../styles/style.css';
 
 class App extends React.Component {
 	constructor(props) {
@@ -25,7 +26,7 @@ class App extends React.Component {
 			.then((response) => {
 				console.log(`Get request successful, here is the response data: ${response.data}`);
         response.data.forEach((listing) => {
-          console.log(listing);  
+          console.log(listing);
         });
 				this.setState({
 					similarListings: response.data,
@@ -45,7 +46,7 @@ class App extends React.Component {
 			display = <Carousel similarListings={this.state.similarListings} />;
 
 		return (
-			<div>
+			<div className={styles.serviceContainer}>
 				{ display }
 			</div>
 		);
