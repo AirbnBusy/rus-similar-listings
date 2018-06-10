@@ -74,11 +74,13 @@
 .forwardContainer {
   display: flex;
   height: 230px;
+  align-items: center;
 }
 
 .forwardButton {
   border: 0px;
   padding: 0px;
+  height: 25px;
 }
 
 .forwardImg {
