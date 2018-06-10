@@ -32,10 +32,9 @@ describe('Test the /api/similar-listings/:id/ path', () => {
     });
   });
 
-  // FIX THIS TEST TO LENGTH = 12, AFTER FIXING THE DATABASE
   test('It should respond to the GET request for a listing with 12 similar listings', (done) => {
     request(app).get('/api/similar-listings/1079').then((response) => {
-      expect(response.body.length).toBe(11);
+      expect(response.body.length).toBe(12);
       done();
     });
   });
