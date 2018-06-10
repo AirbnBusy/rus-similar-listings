@@ -12,6 +12,7 @@ class App extends React.Component {
 		this.state = {
 			// listingId: props.listingId --> will be passed down from the proxy server
 			similarListings: [],
+			currentListings: [],
 		};
 	}
 
@@ -28,8 +29,14 @@ class App extends React.Component {
         response.data.forEach((listing) => {
           console.log(listing);
         });
+				const currentListings = [];
+				currentListings.push(response.data[0]);
+				currentListings.push(response.data[1]);
+				currentListings.push(response.data[2]);
+
 				this.setState({
 					similarListings: response.data,
+					currentListings: currentListings,
 				});
 			})
 			.catch((err) => {
@@ -43,7 +50,7 @@ class App extends React.Component {
 		let display;
 		this.state.similarListings.length === 0 ?
 			display = <div /> :
-			display = <Carousel similarListings={this.state.similarListings} />;
+			display = <Carousel currentListings={this.state.currentListings} />;
 
 		return (
 			<div className={styles.serviceContainer}>
