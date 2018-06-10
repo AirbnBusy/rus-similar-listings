@@ -8,11 +8,13 @@ class App extends React.Component {
 		super(props);
 
 		this.getSimilarListings = this.getSimilarListings.bind(this);
+		this.scrollCarouselRight = this.scrollCarouselRight.bind(this);
 
 		this.state = {
 			// listingId: props.listingId --> will be passed down from the proxy server
 			similarListings: [],
 			currentListings: [],
+			lastThreeListings: false,
 		};
 	}
 
@@ -33,9 +35,6 @@ class App extends React.Component {
 				for (let i = 0; i < 3; i += 1) {
 					currentListings.push(response.data[i]);
 				}
-				// currentListings.push(response.data[0]);
-				// currentListings.push(response.data[1]);
-				// currentListings.push(response.data[2]);
 
 				this.setState({
 					similarListings: response.data,
@@ -49,21 +48,47 @@ class App extends React.Component {
 			});
 	}
 
-	// scrollCarouselRight() {
-	// 	const currentFirstListingIndex;
-	// 	// iterate over similarListings
-	// 		// if similarListings[i] = currentListings[0]
-	// 			// currentFirstListingIndex = i;
-	// 	const currentListings = [];
-	// 	// iterate over similarListings from currentFirstListingIndex + 1 until currentFirstListingIndex + 3
-	// 		currentListings.push()
-	// }
+	scrollCarouselRight() {
+		const similarListings = this.state.similarListings;
+		const currentListings = this.state.currentListings;
+		let currentFirstListingIndex = 0;
+
+		similarListings.forEach((listing, i) => {
+			if (listing === currentListings[0]) {
+				currentFirstListingIndex = i;
+			}
+		});
+
+		function updateCurrentListings() {
+			const newCurrentListings = [];
+			for (let i = currentFirstListingIndex + 1; i < currentFirstListingIndex + 4; i += 1) {
+				newCurrentListings.push(similarListings[i]);
+			}
+			return newCurrentListings;
+		}
+
+		if (currentFirstListingIndex === 8) {
+			this.setState({
+				currentListings: updateCurrentListings(),
+				lastThreeListings: true,
+			});
+		} else if (!this.state.lastThreeListings) {
+			this.setState({
+				currentListings: updateCurrentListings(),
+			});
+		}
+
+	}
 
 	render() {
 		let display;
 		this.state.similarListings.length === 0 ?
 			display = <div /> :
-			display = <Carousel currentListings={this.state.currentListings} />;
+			display = <Carousel
+									currentListings={this.state.currentListings}
+									scrollCarouselRight={this.scrollCarouselRight}
+									lastThreeListings={this.state.lastThreeListings}
+								/>;
 
 		return (
 			<div className={styles.serviceContainer}>
