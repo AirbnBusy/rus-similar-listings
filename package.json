@@ -24,7 +24,9 @@
     "path": "^0.12.7",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-stars": "^2.2.5"
+    "react-stars": "^2.2.5",
+    "react-transition-group": "^1.2.1",
+    "react-transitions": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
