@@ -10,6 +10,7 @@ class App extends React.Component {
 		this.getSimilarListings = this.getSimilarListings.bind(this);
 		this.scrollCarousel = this.scrollCarousel.bind(this);
 		this.showModal = this.showModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
 
 		this.state = {
 			// listingId: props.listingId --> will be passed down from the proxy server
@@ -112,6 +113,14 @@ class App extends React.Component {
 		});
 	}
 
+	closeModal(event) {
+		if (event.target.id === 'modal') {
+			this.setState({
+				modalIsShown: false,
+			});
+		}
+	}
+
 	render() {
 		let display;
 		this.state.similarListings.length === 0 ?
@@ -123,6 +132,7 @@ class App extends React.Component {
 									firstThreeListings={this.state.firstThreeListings}
 									modalIsShown={this.state.modalIsShown}
 									showModal={this.showModal}
+									closeModal={this.closeModal}
 								/>;
 
 		return (

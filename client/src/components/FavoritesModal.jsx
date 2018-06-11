@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './../styles/style.css';
 
-const FavoritesModal = () => (
-  <div className={styles.modalBackground}>
+const FavoritesModal = ({ closeModal }) => (
+  <div id="modal" className={styles.modalBackground} onClick={closeModal}>
     <div className={styles.modalContent}>
 
     </div>
