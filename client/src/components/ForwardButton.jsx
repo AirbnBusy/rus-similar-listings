@@ -4,7 +4,7 @@ import styles from './../styles/style.css';
 const ForwardButton = ({ scrollCarousel, lastThreeListings }) => {
   const button = lastThreeListings ? (<div></div>) :
     (
-      <button id="forward" className={styles.button} onClick={scrollCarousel}>
+      <button id="forward" className={styles.scrollButton} onClick={scrollCarousel}>
         <img id="forward" className={styles.img} src="https://airbnb-similar-listings-photos.s3.amazonaws.com/forward.png"/>
       </button>
     );

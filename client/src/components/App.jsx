@@ -9,6 +9,7 @@ class App extends React.Component {
 
 		this.getSimilarListings = this.getSimilarListings.bind(this);
 		this.scrollCarousel = this.scrollCarousel.bind(this);
+		this.showModal = this.showModal.bind(this);
 
 		this.state = {
 			// listingId: props.listingId --> will be passed down from the proxy server
@@ -16,6 +17,7 @@ class App extends React.Component {
 			currentListings: [],
 			lastThreeListings: false,
 			firstThreeListings: true,
+			modalIsShown: false,
 		};
 	}
 
@@ -104,6 +106,12 @@ class App extends React.Component {
 
 	}
 
+	showModal() {
+		this.setState({
+			modalIsShown: true,
+		});
+	}
+
 	render() {
 		let display;
 		this.state.similarListings.length === 0 ?
@@ -113,6 +121,8 @@ class App extends React.Component {
 									scrollCarousel={this.scrollCarousel}
 									lastThreeListings={this.state.lastThreeListings}
 									firstThreeListings={this.state.firstThreeListings}
+									modalIsShown={this.state.modalIsShown}
+									showModal={this.showModal}
 								/>;
 
 		return (

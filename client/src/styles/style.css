@@ -23,14 +23,24 @@
   width: 330px;
   height: 230px;
   border-radius: 3px;
+  /* cursor: pointer; */
 }
 
-.heart {
+.heartButton {
   width: 25px;
   height: 25px;
   position: absolute;
   top: 10px;
   left: 295px;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.heart {
+  width: 25px;
+  height: 25px;
 }
 
 .descriptionAndBeds {
@@ -79,7 +89,7 @@
   width: 25px;
 }
 
-.button {
+.scrollButton {
   border: 0px;
   padding: 0px;
   height: 25px;
@@ -89,4 +99,23 @@
 .img {
   width: 25px;
   height: 25px;
+}
+
+.modalBackground {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modalContent {
+  background-color: #fefefe;
+  margin: 65px auto;
+  padding: 32px;
+  width: 504px;
+  height: 609px;
 }
