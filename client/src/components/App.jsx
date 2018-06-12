@@ -114,7 +114,7 @@ class App extends React.Component {
 	}
 
 	closeModal(event) {
-		if (event.target.id === 'modal') {
+		if (event.target.id === 'modal' || event.target.id === 'close') {
 			this.setState({
 				modalIsShown: false,
 			});

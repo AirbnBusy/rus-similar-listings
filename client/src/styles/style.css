@@ -102,13 +102,13 @@
 }
 
 .modalBackground {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   background-color: rgba(0,0,0,0.7);
 }
 
@@ -118,4 +118,47 @@
   padding: 32px;
   width: 504px;
   height: 609px;
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.closeImg {
+  width: 16px;
+  height: 16px;
+}
+
+.modalHeader {
+  color: #424447;
+}
+
+.facebookButton {
+  width: 100%;
+  height: 49px;
+  border: 2px solid #3B5998;
+  border-radius: 4px;
+  padding: 12px 24px;
+  background-color: #3B5998;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.googleButton {
+  width: 100%;
+  height: 49px;
+  border: 2px solid #545a63;
+  border-radius: 4px;
+  padding: 12px 24px;
+}
+
+.facebookImg {
+  width: 25px;
+  height: 25px;
 }
