@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './../styles/style.css';
+import styles from './../styles/carousel-entry.css';
 import ReactStars from 'react-stars';
 
 const CarouselEntry = ({ listing, showModal }) => {

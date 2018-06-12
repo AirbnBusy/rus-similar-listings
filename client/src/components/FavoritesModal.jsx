@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './../styles/style.css';
+import styles from './../styles/favorites-modal.css';
 
 const FavoritesModal = ({ closeModal }) => (
   <div id="modal" className={styles.modalBackground} onClick={closeModal}>

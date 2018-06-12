@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
-import styles from './../styles/style.css';
+import styles from './../styles/app.css';
 
 class App extends React.Component {
 	constructor(props) {

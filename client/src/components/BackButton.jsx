@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './../styles/style.css';
+import styles from './../styles/back-button.css';
 
 const BackButton = ({ firstThreeListings, scrollCarousel }) => {
   const button = firstThreeListings ? (<div></div>) :

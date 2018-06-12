@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './../styles/style.css';
+import styles from './../styles/forward-button.css';
 
 const ForwardButton = ({ scrollCarousel, lastThreeListings }) => {
   const button = lastThreeListings ? (<div></div>) :
