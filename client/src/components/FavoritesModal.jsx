@@ -47,6 +47,15 @@ const FavoritesModal = ({ closeModal }) => (
         text={'Sign up with Email'}
       />
 
+      <div className={styles.longLine}></div>
+
+      <div className={styles.loginTextContainer}>
+        <span>Already have an Airbnb account?</span>
+        <span className={styles.loginText}>Log in</span>
+      </div>
+
+
+
     </div>
   </div>
 );
