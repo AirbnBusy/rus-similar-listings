@@ -1,4 +1,5 @@
 import React from 'react';
+import ModalSocialButton from './ModalSocialButton.jsx';
 import styles from './../styles/favorites-modal.css';
 
 const FavoritesModal = ({ closeModal }) => (
@@ -16,25 +17,35 @@ const FavoritesModal = ({ closeModal }) => (
 
       <h3 className={styles.modalHeader}>Save to list</h3>
 
-      <button className={styles.facebookButton}>
-        <span>
-          <img className={styles.facebookImg} src="https://airbnb-similar-listings-photos.s3.amazonaws.com/facebook.svg" />
-        </span>
-        <span className={styles.facebookText}>Continue with Facebook</span>
-      </button>
+      <ModalSocialButton
+        buttonClass={styles.facebookButton}
+        imgClass={styles.facebookImg}
+        srcImg={'facebook.svg'}
+        textClass={styles.facebookText}
+        text={'Continue with Facebook'}
+      />
 
-      <button className={styles.googleButton}>
-        <span>
-          <img className={styles.googleImg} src="https://airbnb-similar-listings-photos.s3.amazonaws.com/google.svg" />
-        </span>
-        <span className={styles.googleText}>Continue with Google</span>
-      </button>
+      <ModalSocialButton
+        buttonClass={styles.googleButton}
+        imgClass={styles.googleImg}
+        srcImg={'google.svg'}
+        textClass={styles.googleText}
+        text={'Continue with Google'}
+      />
 
       <div className={styles.lineBreakContainer}>
         <p className={styles.line}>
           <span className={styles.or}>or</span>
         </p>
       </div>
+
+      <ModalSocialButton
+        buttonClass={styles.signUpButton}
+        imgClass={styles.signUpImg}
+        srcImg={'letter.svg'}
+        textClass={styles.signUpText}
+        text={'Sign up with Email'}
+      />
 
     </div>
   </div>
