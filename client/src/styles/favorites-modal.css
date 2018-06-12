@@ -83,46 +83,23 @@
   color: #545a63;
 }
 
-.p {
-  width: 100%;
-  text-align: center;
-  border-bottom: 1px solid #000;
-  line-height: 0.1em;
-  margin: 10px 0 20px;
-}
-
-.span {
-  background:#fff;
-  padding:0 10px; 
-}
-
-/*
-.or {
-  padding: 16px;
-}
-
-.orText {
-  color: #545a63;
+.lineBreakContainer {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  height: 20px;
 }
 
 .line {
-  border-top: 1px solid #e4e4e4;
-  border-bottom: 1px solid #e4e4e4;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  border-color: #d2d4d8;
+  line-height: 0.1em;
+  margin: 0px;
 }
 
-.divider {
-
+.or {
+  background:#fff;
+  padding: 0 13px;
+  color: rgb(118, 118, 118);
 }
-
-.outerSpan {
-  color: rgb(228, 228, 228);
-  text-decoration: line-through;
-}
-
-.innerSpan {
-  color: white;
-}
-
-.test {
-  text-decoration: none;
-} */

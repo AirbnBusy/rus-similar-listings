@@ -30,9 +30,11 @@ const FavoritesModal = ({ closeModal }) => (
         <span className={styles.googleText}>Continue with Google</span>
       </button>
 
-      <p className={styles.p}>
-        <span className={styles.span}>or</span>
-      </p>
+      <div className={styles.lineBreakContainer}>
+        <p className={styles.line}>
+          <span className={styles.or}>or</span>
+        </p>
+      </div>
 
     </div>
   </div>
