@@ -1,0 +1,62 @@
+.listingsHeader {
+  color: #424447;
+}
+
+.photoContainer {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.photo {
+  width: 350px;
+  height: 250px;
+  border-radius: 3px;
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 15px;
+  left: 305px;
+}
+
+.descriptionAndBeds {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 12px;
+  color: #0b6054;
+}
+
+.header {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #424447;
+}
+
+.price {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: lighter;
+  font-size: 14px;
+  color: #5d5d60;
+}
+
+.starsAndReviews {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #4b4b4f;
+}
+
+.stars {
+  display: inline;
+}
+
+.reviews {
+  margin: 0 3px;
+}
