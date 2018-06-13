@@ -10,11 +10,12 @@
 
 .listingsHeader {
   color: #424447;
+  margin: 19px 0 19px 32px;
 }
 
 .photoContainer {
   position: relative;
-  margin: 0px 16px 0px 0px;
+  margin: 0 8px 0 8px;
   width: 330px;
 }
 
@@ -71,17 +72,21 @@
   margin: 0 3px;
 }
 
-.forwardContainer {
+.buttonContainer {
   display: flex;
   height: 230px;
+  align-items: center;
+  width: 25px;
 }
 
-.forwardButton {
+.button {
   border: 0px;
   padding: 0px;
+  height: 25px;
+  cursor: pointer;
 }
 
-.forwardImg {
+.img {
   width: 25px;
   height: 25px;
 }

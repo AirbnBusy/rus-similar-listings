@@ -8,10 +8,14 @@ class App extends React.Component {
 		super(props);
 
 		this.getSimilarListings = this.getSimilarListings.bind(this);
+		this.scrollCarousel = this.scrollCarousel.bind(this);
 
 		this.state = {
 			// listingId: props.listingId --> will be passed down from the proxy server
 			similarListings: [],
+			currentListings: [],
+			lastThreeListings: false,
+			firstThreeListings: true,
 		};
 	}
 
@@ -28,8 +32,14 @@ class App extends React.Component {
         response.data.forEach((listing) => {
           console.log(listing);
         });
+				const currentListings = [];
+				for (let i = 0; i < 3; i += 1) {
+					currentListings.push(response.data[i]);
+				}
+
 				this.setState({
 					similarListings: response.data,
+					currentListings: currentListings,
 				});
 			})
 			.catch((err) => {
@@ -39,11 +49,71 @@ class App extends React.Component {
 			});
 	}
 
+	scrollCarousel(event) {
+		const similarListings = this.state.similarListings;
+		const currentListings = this.state.currentListings;
+		let currentFirstListingIndex = 0;
+
+		similarListings.forEach((listing, i) => {
+			if (listing === currentListings[0]) {
+				currentFirstListingIndex = i;
+			}
+		});
+
+		function updateListingsForward() {
+			const newCurrentListings = [];
+			for (let i = currentFirstListingIndex + 1; i <= currentFirstListingIndex + 3; i += 1) {
+				newCurrentListings.push(similarListings[i]);
+			}
+			return newCurrentListings;
+		}
+
+		function updateListingsBack() {
+			const newCurrentListings = [];
+			for (let i = currentFirstListingIndex - 1; i <= currentFirstListingIndex + 1; i += 1) {
+				newCurrentListings.push(similarListings[i]);
+			}
+			return newCurrentListings;
+		}
+
+		if (event.target.id === 'forward') {
+			if (currentFirstListingIndex === 8) {
+				this.setState({
+					currentListings: updateListingsForward(),
+					lastThreeListings: true,
+				});
+			} else if (!this.state.lastThreeListings) {
+				this.setState({
+					currentListings: updateListingsForward(),
+					firstThreeListings: false,
+				});
+			}
+		} else if (event.target.id === 'back') {
+			if (currentFirstListingIndex === 1) {
+				this.setState({
+					currentListings: updateListingsBack(),
+					firstThreeListings: true,
+				});
+			} else if (!this.state.firstThreeListings) {
+				this.setState({
+					currentListings: updateListingsBack(),
+					lastThreeListings: false,
+				});
+			}
+		}
+
+	}
+
 	render() {
 		let display;
 		this.state.similarListings.length === 0 ?
 			display = <div /> :
-			display = <Carousel similarListings={this.state.similarListings} />;
+			display = <Carousel
+									currentListings={this.state.currentListings}
+									scrollCarousel={this.scrollCarousel}
+									lastThreeListings={this.state.lastThreeListings}
+									firstThreeListings={this.state.firstThreeListings}
+								/>;
 
 		return (
 			<div className={styles.serviceContainer}>
