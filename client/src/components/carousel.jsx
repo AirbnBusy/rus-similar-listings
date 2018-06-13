@@ -6,7 +6,7 @@ import FavoritesModal from './FavoritesModal.jsx';
 import styles from './../styles/carousel.css';
 
 const Carousel = ({ currentListings, scrollCarousel, lastThreeListings, firstThreeListings, modalIsShown, showModal, closeModal }) => {
-  const modal = modalIsShown ? <FavoritesModal closeModal={closeModal}/> : null;
+  const modal = modalIsShown ? <FavoritesModal closeModal={closeModal} listing={currentListings[0]} /> : null;
 
   return (
       <div>

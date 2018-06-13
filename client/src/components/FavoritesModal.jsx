@@ -1,8 +1,9 @@
 import React from 'react';
 import ModalSocialButton from './ModalSocialButton.jsx';
+import ModalListing from './ModalListing.jsx';
 import styles from './../styles/favorites-modal.css';
 
-const FavoritesModal = ({ closeModal }) => (
+const FavoritesModal = ({ closeModal, listing }) => (
   <div id="modal" className={styles.modalBackground} onClick={closeModal}>
     <div className={styles.modalContent}>
 
@@ -54,7 +55,7 @@ const FavoritesModal = ({ closeModal }) => (
         <span className={styles.loginText}>Log in</span>
       </div>
 
-
+      <ModalListing listing={listing}/>
 
     </div>
   </div>

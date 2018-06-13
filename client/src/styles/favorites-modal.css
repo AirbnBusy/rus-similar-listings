@@ -15,6 +15,7 @@
   padding: 32px;
   width: 504px;
   height: 609px;
+  position: relative;
 }
 
 .closeButton {
@@ -147,3 +148,9 @@
   font-weight: normal;
   cursor: pointer;
 }
+
+/* .listing {
+  width: 504px;
+  position: absolute;
+  bottom: 0px;
+} */
