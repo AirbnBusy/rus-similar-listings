@@ -18,6 +18,7 @@ class App extends React.Component {
 			currentListings: [],
 			lastThreeListings: false,
 			firstThreeListings: true,
+			modalListing: {},
 			modalIsShown: false,
 		};
 	}
@@ -107,8 +108,9 @@ class App extends React.Component {
 
 	}
 
-	showModal() {
+	showModal(listing) {
 		this.setState({
+			modalListing: listing,
 			modalIsShown: true,
 		});
 	}
@@ -130,6 +132,7 @@ class App extends React.Component {
 									scrollCarousel={this.scrollCarousel}
 									lastThreeListings={this.state.lastThreeListings}
 									firstThreeListings={this.state.firstThreeListings}
+									modalListing={this.state.modalListing}
 									modalIsShown={this.state.modalIsShown}
 									showModal={this.showModal}
 									closeModal={this.closeModal}

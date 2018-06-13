@@ -3,7 +3,7 @@ import ModalSocialButton from './ModalSocialButton.jsx';
 import ModalListing from './ModalListing.jsx';
 import styles from './../styles/favorites-modal.css';
 
-const FavoritesModal = ({ closeModal, listing }) => (
+const FavoritesModal = ({ closeModal, modalListing }) => (
   <div id="modal" className={styles.modalBackground} onClick={closeModal}>
     <div className={styles.modalContent}>
 
@@ -55,7 +55,7 @@ const FavoritesModal = ({ closeModal, listing }) => (
         <span className={styles.loginText}>Log in</span>
       </div>
 
-      <ModalListing listing={listing}/>
+      <ModalListing modalListing={modalListing}/>
 
     </div>
   </div>

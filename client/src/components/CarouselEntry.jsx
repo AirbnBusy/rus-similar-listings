@@ -9,7 +9,7 @@ const CarouselEntry = ({ listing, showModal }) => {
   return (
     <div className={styles.photoContainer}>
       <img className={styles.photo} src={`https://airbnb-similar-listings-photos.s3.amazonaws.com/${listing.photo}`}/>
-      <button className={styles.heartButton} onClick={showModal}>
+      <button className={styles.heartButton} onClick={showModal.bind(null, listing)}>
         <img className={styles.heart} src="https://airbnb-similar-listings-photos.s3.amazonaws.com/heart.png"/>
       </button>
       <p className={styles.descriptionAndBeds}>

@@ -5,8 +5,8 @@ import BackButton from './BackButton.jsx';
 import FavoritesModal from './FavoritesModal.jsx';
 import styles from './../styles/carousel.css';
 
-const Carousel = ({ currentListings, scrollCarousel, lastThreeListings, firstThreeListings, modalIsShown, showModal, closeModal }) => {
-  const modal = modalIsShown ? <FavoritesModal closeModal={closeModal} listing={currentListings[0]} /> : null;
+const Carousel = ({ currentListings, scrollCarousel, lastThreeListings, firstThreeListings, modalListing, modalIsShown, showModal, closeModal }) => {
+  const modal = modalIsShown ? <FavoritesModal closeModal={closeModal} modalListing={modalListing} /> : null;
 
   return (
       <div>
