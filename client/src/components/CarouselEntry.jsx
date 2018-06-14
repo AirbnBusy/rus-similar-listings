@@ -1,21 +1,17 @@
 import React from 'react';
-import styles from './../styles/style.css';
+import styles from './../styles/carousel-entry.css';
 import ReactStars from 'react-stars';
 
-const CarouselEntry = ({ listing }) => {
+const CarouselEntry = ({ listing, showModal }) => {
   let bed;
   listing.beds === 1 ? bed = 'BED' : bed = 'BEDS';
 
   return (
     <div className={styles.photoContainer}>
-      <img
-        className={styles.photo}
-        src={`https://airbnb-similar-listings-photos.s3.amazonaws.com/${listing.photo}`}
-      />
-      <img
-        className={styles.heart}
-        src="https://airbnb-similar-listings-photos.s3.amazonaws.com/heart.png"
-      />
+      <img className={styles.photo} src={`https://airbnb-similar-listings-photos.s3.amazonaws.com/${listing.photo}`}/>
+      <button className={styles.heartButton} onClick={showModal.bind(null, listing)}>
+        <img className={styles.heart} src="https://airbnb-similar-listings-photos.s3.amazonaws.com/heart.png"/>
+      </button>
       <p className={styles.descriptionAndBeds}>
         {`${listing.listing_size_description}`} &bull; {`${listing.beds} ${bed}`}
       </p>

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
-import styles from './../styles/style.css';
+import styles from './../styles/app.css';
 
 class App extends React.Component {
 	constructor(props) {
@@ -9,6 +9,8 @@ class App extends React.Component {
 
 		this.getSimilarListings = this.getSimilarListings.bind(this);
 		this.scrollCarousel = this.scrollCarousel.bind(this);
+		this.showModal = this.showModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
 
 		this.state = {
 			// listingId: props.listingId --> will be passed down from the proxy server
@@ -16,6 +18,8 @@ class App extends React.Component {
 			currentListings: [],
 			lastThreeListings: false,
 			firstThreeListings: true,
+			modalListing: {},
+			modalIsShown: false,
 		};
 	}
 
@@ -104,6 +108,21 @@ class App extends React.Component {
 
 	}
 
+	showModal(listing) {
+		this.setState({
+			modalListing: listing,
+			modalIsShown: true,
+		});
+	}
+
+	closeModal(event) {
+		if (event.target.id === 'modal' || event.target.id === 'close') {
+			this.setState({
+				modalIsShown: false,
+			});
+		}
+	}
+
 	render() {
 		let display;
 		this.state.similarListings.length === 0 ?
@@ -113,6 +132,10 @@ class App extends React.Component {
 									scrollCarousel={this.scrollCarousel}
 									lastThreeListings={this.state.lastThreeListings}
 									firstThreeListings={this.state.firstThreeListings}
+									modalListing={this.state.modalListing}
+									modalIsShown={this.state.modalIsShown}
+									showModal={this.showModal}
+									closeModal={this.closeModal}
 								/>;
 
 		return (
