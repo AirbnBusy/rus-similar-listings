@@ -1,0 +1,17 @@
+.scroll-enter {
+  transform: translateX(-100%);
+}
+
+.scroll-enter.scroll-enter-active {
+  transform: translateX(-100%);
+  transition: transform 700ms ease-in-out;
+}
+
+.scroll-leave {
+  transform: translateX(-100%);
+}
+
+.scroll-leave.scroll-leave-active {
+  transform: translateX(-100%);
+  transition: transform 700ms ease-in-out;
+}
