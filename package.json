@@ -11,7 +11,8 @@
     "eslint-init": "eslint --init",
     "eslint": "eslint ./server ./client/src ./database; exit 0",
     "react-dev": "webpack -d --watch",
-    "start": "nodemon ./server/server.js",
+    "server": "nodemon ./server/server.js",
+    "start": "node ./server/server.js",
     "test": "jest --coverage --forceExit"
   },
   "dependencies": {
