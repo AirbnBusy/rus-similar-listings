@@ -6,7 +6,7 @@ WORKDIR /src/similar-listings
 
 COPY . /src/similar-listings
 
-RUN npm install
+RUN yarn install
 
 EXPOSE 3004
 
