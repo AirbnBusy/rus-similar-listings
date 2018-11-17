@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const Promise = require('bluebird');
 
 const connection = mysql.createConnection({
   user: 'root',
@@ -12,6 +13,37 @@ connection.connect((err) => {
   }
   console.log(`Successfuly connected to the db, here is the connection id: ${connection.threadId}`);
 });
+
+function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
+  return new Promise((resolve, reject) => {
+    let counter = 0;
+    for (let i = 1001; i <= 1100; i += 1) {
+      const photo = `${i}.jpg`;
+      const lsd = listingSizeDescription[Math.floor(Math.random() * listingSizeDescription.length)];
+      const beds = Math.ceil(Math.random() * 4);
+      const lh = listingHeader[Math.floor(Math.random() * listingHeader.length)];
+      const price = Math.ceil(Math.random() * 700);
+      const rating = ratings[Math.floor(Math.random() * ratings.length)];
+      const numOfReviews = Math.ceil(Math.random() * 350);
+
+
+      connection.query(
+        `INSERT INTO listings (photo, listing_size_description, beds, listing_header, 
+        price, avg_rating, number_of_reviews) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", ${price},
+        ${rating}, ${numOfReviews})`,
+        (err) => {
+          if (err) {
+            reject(err);
+          }
+          counter += 1;
+          if (counter === 100) {
+            resolve();
+          }
+        },
+      );
+    }
+  });
+}
 
 function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
   for (let i = 1001; i <= 1100; i += 1) {
