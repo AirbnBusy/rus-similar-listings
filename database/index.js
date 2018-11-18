@@ -69,7 +69,7 @@ function populateSimilarListingsTable(similarListingIds) {
       twelveIds.forEach((sli) => {
         connection.query(
           `INSERT INTO similar_listings (listing_id, similar_listing_id) VALUES(${i}, ${sli})`,
-          callback
+          callback // for some reason, if I put a trailing coma, then node throws an error
         );
       });
     }
