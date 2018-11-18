@@ -76,20 +76,58 @@ function populateSimilarListingsTable(similarListingIds) {
   });
 }
 
-function getSimilarListings(id, callback) {
-  connection.query(`SELECT similar_listing_id FROM similar_listings WHERE listing_id=${id}`, (err, results) => {
-    if (err) {
-      console.log(`DB query failed, here is the error: ${err}`);
-    }
-
-    const similarListingIds = [];
-    results.forEach((similarListing) => {
-      similarListingIds.push(similarListing.similar_listing_id);
-    });
-    connection.query(`SELECT * FROM listings WHERE id IN (${similarListingIds})`, (error, data) => {
-      callback(error, data);
-    });
+function getSimilarListingsIds(id) {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT similar_listing_id FROM similar_listings WHERE listing_id=${id}`,
+      (err, results) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(results);
+      }
+    );
   });
+}
+
+function getSimilarListings(id) {
+  return getSimilarListingsIds(id)
+    .then((results) => {
+      return new Promise((resolve, reject) => {
+        const similarListingIds = [];
+        results.forEach((similarListing) => {
+          similarListingIds.push(similarListing.similar_listing_id);
+        });
+        connection.query(
+          `SELECT * FROM listings WHERE id IN (${similarListingIds})`, 
+          (error, data) => {
+            if (error) {
+              reject(error);
+            }
+            resolve(data);
+          }
+        );
+      });
+    })
+    .catch((err) => {
+      console.log(`DB query failed, here is the error: ${err}`);
+    });
+
+  // return new Promise((resolve, reject) => {
+  //   connection.query(`SELECT similar_listing_id FROM similar_listings WHERE listing_id=${id}`, (err, results) => {
+  //     if (err) {
+  //       console.log(`DB query failed, here is the error: ${err}`);
+  //     }
+
+  //     const similarListingIds = [];
+  //     results.forEach((similarListing) => {
+  //       similarListingIds.push(similarListing.similar_listing_id);
+  //     });
+  //     connection.query(`SELECT * FROM listings WHERE id IN (${similarListingIds})`, (error, data) => {
+  //       callback(error, data);
+  //     });
+  //   });
+  // });
 }
 
 module.exports = {

@@ -11,12 +11,13 @@ app.use('/rooms/:id', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/api/similar-listings/:id', (req, res) => {
   const { params } = req;
-  db.getSimilarListings(params.id, (err, results) => {
-    if (err) {
+  db.getSimilarListings(params.id)
+    .then((results) => {
+      res.status(200).send(results);
+    })
+    .catch((err) => {
       console.log(`DB query failed, here is the error: ${err}`);
-    }
-    res.status(200).send(results);
-  });
+    });
 });
 
 module.exports = app;
