@@ -32,4 +32,8 @@ populateListingsTable(listingSizeDescription, listingHeader, ratings)
   });
 
 const similarListingIds = _.range(1001, 1101);
-populateSimilarListingsTable(similarListingIds);
+populateSimilarListingsTable(similarListingIds)
+  .then(() => {})
+  .catch((err) => {
+    console.log(`Failed to write to the DB, here is the error ${err}`);
+  });
