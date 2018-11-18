@@ -25,10 +25,16 @@ const listingHeader = [
   'Ocean View Malibu Mountain Retreat',
 ];
 const ratings = _.range(1, 5.5, 0.5);
-populateListingsTable(listingSizeDescription, listingHeader, ratings)
-  .catch((err) => {
+async function asyncPopulateListingsTable(listingSizeDescription, listingHeader, ratings) {
+  // This is pretty pointless in this case since async/await is useful when we have chains
+  // Though this is creating unnecessary complexity, it is done for learning purposes
+  try {
+    await populateListingsTable(listingSizeDescription, listingHeader, ratings);
+  } catch (err) {
     console.log(`Failed to write to the DB, here is the error ${err}`);
-  });
+  }
+}
+asyncPopulateListingsTable(listingSizeDescription, listingHeader, ratings);
 
 const similarListingIds = _.range(1001, 1101);
 populateSimilarListingsTable(similarListingIds)
