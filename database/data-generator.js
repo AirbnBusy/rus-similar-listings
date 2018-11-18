@@ -37,7 +37,11 @@ async function asyncPopulateListingsTable(listingSizeDescription, listingHeader,
 asyncPopulateListingsTable(listingSizeDescription, listingHeader, ratings);
 
 const similarListingIds = _.range(1001, 1101);
-populateSimilarListingsTable(similarListingIds)
-  .catch((err) => {
+async function asyncPopulateSimilarListingsTable(similarListingIds) {
+  try {
+    await populateSimilarListingsTable(similarListingIds);
+  } catch (err) {
     console.log(`Failed to write to the DB, here is the error ${err}`);
-  });
+  }
+}
+asyncPopulateSimilarListingsTable(similarListingIds);
