@@ -25,7 +25,11 @@ const listingHeader = [
   'Ocean View Malibu Mountain Retreat',
 ];
 const ratings = _.range(1, 5.5, 0.5);
-populateListingsTable(listingSizeDescription, listingHeader, ratings);
+populateListingsTable(listingSizeDescription, listingHeader, ratings)
+  .then(() => {})
+  .catch((err) => {
+    console.log(`Failed to write to the DB, here is the error ${err}`);
+  });
 
 const similarListingIds = _.range(1001, 1101);
 populateSimilarListingsTable(similarListingIds);

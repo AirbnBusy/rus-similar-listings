@@ -16,7 +16,16 @@ connection.connect((err) => {
 
 function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
   return new Promise((resolve, reject) => {
-    let counter = 0;
+    let iteration = 0;
+    const callback = (err) => {
+      if (err) {
+        reject(err);
+      }
+      iteration += 1;
+      if (iteration === 100) {
+        resolve();
+      }
+    };
     for (let i = 1001; i <= 1100; i += 1) {
       const photo = `${i}.jpg`;
       const lsd = listingSizeDescription[Math.floor(Math.random() * listingSizeDescription.length)];
@@ -26,42 +35,34 @@ function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
       const rating = ratings[Math.floor(Math.random() * ratings.length)];
       const numOfReviews = Math.ceil(Math.random() * 350);
 
-
       connection.query(
         `INSERT INTO listings (photo, listing_size_description, beds, listing_header, 
-        price, avg_rating, number_of_reviews) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", ${price},
-        ${rating}, ${numOfReviews})`,
-        (err) => {
-          if (err) {
-            reject(err);
-          }
-          counter += 1;
-          if (counter === 100) {
-            resolve();
-          }
-        },
+        price, avg_rating, number_of_reviews) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", 
+        ${price}, ${rating}, ${numOfReviews})`,
+        callback // for some reason, if I put a trailing coma, then node throws an error
       );
     }
   });
 }
 
-function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
-  for (let i = 1001; i <= 1100; i += 1) {
-    const photo = `${i}.jpg`;
-    const lsd = listingSizeDescription[Math.floor(Math.random() * listingSizeDescription.length)];
-    const beds = Math.ceil(Math.random() * 4);
-    const lh = listingHeader[Math.floor(Math.random() * listingHeader.length)];
-    const price = Math.ceil(Math.random() * 700);
-    const rating = ratings[Math.floor(Math.random() * ratings.length)];
-    const numOfReviews = Math.ceil(Math.random() * 350);
+// function populateListingsTable(listingSizeDescription, listingHeader, ratings) {
+//   const callback = (err) => {
+//     if (err) {
+//       console.log(`Failed to write to the DB, here is the error: ${err}`);
+//     }
+//   };
+//   for (let i = 1001; i <= 1100; i += 1) {
+//     const photo = `${i}.jpg`;
+//     const lsd = listingSizeDescription[Math.floor(Math.random() * listingSizeDescription.length)];
+//     const beds = Math.ceil(Math.random() * 4);
+//     const lh = listingHeader[Math.floor(Math.random() * listingHeader.length)];
+//     const price = Math.ceil(Math.random() * 700);
+//     const rating = ratings[Math.floor(Math.random() * ratings.length)];
+//     const numOfReviews = Math.ceil(Math.random() * 350);
 
-    connection.query(`INSERT INTO listings (photo, listing_size_description, beds, listing_header, price, avg_rating, number_of_reviews) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", ${price}, ${rating}, ${numOfReviews})`, (err) => {
-      if (err) {
-        console.log(`Failed to write to the DB, here is the error: ${err}`);
-      }
-    });
-  }
-}
+//     connection.query(`INSERT INTO listings (photo, listing_size_description, beds, listing_header, price, avg_rating, number_of_reviews) VALUES("${photo}", "${lsd}", ${beds}, "${lh}", ${price}, ${rating}, ${numOfReviews})`, callback);
+//   }
+// }
 
 function populateSimilarListingsTable(similarListingIds) {
   for (let i = 1001; i <= 1100; i += 1) {
